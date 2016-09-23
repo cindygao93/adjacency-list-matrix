@@ -1,7 +1,12 @@
 ##intuit python 
+## this project takes two csv files, one of a list of employees, with their employee id, name, and department, 
+## the second csv file denotes pairs of friends within the company based on their employee ids.
+
+## The programs prints off an adjacency list of employees and their corresponding friends at the company based off of these two files.
 
 import csv
 
+## parses the csv file and returns a list of lists. Each individual list in the list represents a line from the csv file.
 def parser(csvfile_name, aList):
 	with open(csvfile_name, 'rb') as csvfile:
 	 reader = csv.reader(csvfile)
@@ -11,6 +16,18 @@ def parser(csvfile_name, aList):
 	 aList = aList[1:]
 	return aList
 
+
+## this function takes two lists of lists as parameteres, which were the outputs from parsing the csv files 
+## it returns an adjacency matrix string that prints the employee id as the first column and subsequent 
+## numbers in the row as the employee's friends' id
+
+## example output:
+
+## 1: 2, 3
+## 2: 1, 4
+## 3: 1
+## 4: 2
+## 6: None
 
 def friend_matrix(employ, friend):
 
@@ -42,7 +59,7 @@ def friend_matrix(employ, friend):
 	return matrix 
 
 
-
+## using the example csv files files in the same directory, this main function prints off the adjacency matrix mentioned in the beginning
 def main():
 	employees = parser('employees.csv', [])
 	friendships = parser('friendships.csv', [])
